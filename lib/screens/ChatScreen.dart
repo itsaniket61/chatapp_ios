@@ -123,12 +123,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: CircularProgressIndicator(),
                     )
                   : Container(
-                      child: AnimatedList(
+                      child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           reverse: true,
                           padding: EdgeInsets.all(10),
-                          initialItemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, i, animation) {
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, i) {
                             if (snapshot.data!.docs[i]['from'] !=
                                 FirebaseAuth.instance.currentUser!.uid) {
                               snapshot.data!.docs[i].reference
